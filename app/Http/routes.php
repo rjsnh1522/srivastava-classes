@@ -36,6 +36,11 @@ Route::group(['middleware' => 'student','prefix' => 'student'], function () {
             'uses' => 'student\TimeTableController@getScheduleTable']);
 
 
+    Route::post('/save-batch/{id}/{sub}',
+        ['as' => 'save.batch.response',
+            'uses' => 'student\TimeTableController@postStudentBatchResponse']);
+
+
 //    profile
     Route::get('/complete-student-profile',
         ['as' => 'student.complete.profile',

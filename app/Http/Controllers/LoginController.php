@@ -58,6 +58,8 @@ class LoginController extends Controller
                 else{
                     $dataStudent=Student::where('email',$checkStatus->email)->first();
                     if($dataStudent==''){
+
+                        return 1;
                         Session::flash('wait', 'Registration is not approved!!');
                         return redirect()->back();
                     }else{

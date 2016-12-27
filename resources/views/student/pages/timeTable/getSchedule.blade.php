@@ -75,7 +75,7 @@
                                             <option value="" disabled selected>@if(old('selectedSubject')){{old('selectedSubject')}} @else Select Subject @endif</option>
                                             <option value="Physics">Physics</option>
                                             <option value="Chemistry">Chemistry</option>
-                                            <option value="Maths">Maths</option>
+                                            <option value="Mathematics">Mathematics</option>
                                             <option value="Biology">Biology</option>
                                         </select>
                                         <label>Select Subject</label>
@@ -95,7 +95,6 @@
             </div>
             @if(Session::has('dataForTable'))
             <div class="col s12 m12 l12">
-
                     <div id="table-datatables">
                         <div class="row">
                             <div class="col s12 m12 l12">
@@ -112,33 +111,30 @@
                                         <th>Day Two</th>
                                         <th>Day Two Time</th>
                                         <th>Action</th>
-
                                     </tr>
                                     </thead>
-
-
                                     <tbody>
                                     <?php $i=0;?>
-                                    @foreach(Session::get('dataTimeTable') as $timTable)
+                                    @foreach(Session::get('dataTimeTable') as $timeTable)
                                         <?php $i++;?>
                                         <tr>
                                             <td>{{$i}}</td>
-                                            <td>{{$timTable->faculty}}</td>
-                                            <td>{{$timTable->batch_name}}</td>
-                                            <td>{{$timTable->subject}}</td>
-                                            <td>{{$timTable->class}}</td>
-                                            <td>{{$timTable->day_one}}</td>
-                                            <td>{{$timTable->day_one_time}}</td>
-                                            <td>{{$timTable->day_two}}</td>
-                                            <td>{{$timTable->day_two_time}}</td>
+                                            <td>{{$timeTable->faculty}}</td>
+                                            <td>{{$timeTable->batch_name}}</td>
+                                            <td>{{$timeTable->subject}}</td>
+                                            <td>{{$timeTable->class}}</td>
+                                            <td>{{$timeTable->day_one}}</td>
+                                            <td>{{$timeTable->day_one_time}}</td>
+                                            <td>{{$timeTable->day_two}}</td>
+                                            <td>{{$timeTable->day_two_time}}</td>
                                             <td>
                                                 <p>
-                                                <form action="#" method="post">
-                                                    <input type="checkbox" id="test{{$i}}" name="selectMe"/>
+                                                <form action="{{route('save.batch.response',[$timeTable->schedule_id,$timeTable->subject])}}" method="post">
+                                                    <input type="checkbox" id="test{{$i}}" name="selectMe" onChange="this.form.submit()"/>
                                                     <label for="test{{$i}}"></label>
+                                                    <input type="hidden" name="_token" value="{{Session('_token')}}">
                                                 </form>
                                                 </p>
-
                                             </td>
                                         </tr>
                                     @endforeach
