@@ -1,0 +1,460 @@
+body{
+    font-size: 14px;
+    /*font-family: 'Montserrat', sans-serif;*/
+    color: #595f6f;
+}
+
+
+::-moz-selection {
+    background: #3223B1;
+}
+::selection {
+    background: #3223B1;
+}
+
+
+div#popup{
+    height : 90%;
+    width:90%;
+    position: fixed;
+    z-index:999999;
+    max-width: 960px;
+    min-width: 800px;
+    background-color:blue;
+    position: fixed;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+}
+.colw{
+    color: #ffffff;
+    position: absolute;
+    right: 15px;
+    top:10px;
+    font-size: 20px;
+}
+.imgPopWrap{
+    width: 100%;
+    height: 100%;
+    background-color: red;
+}
+.img100{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.alignRightTabs {
+    text-align: right;
+    padding-bottom: 20px;
+
+}
+
+.alignRightTabs a {
+    background: #fdfdfd;
+    color: #7a7c82 !important;
+}
+
+.alignRightTabs a:hover {
+    background: #0F2453;
+    color: #ffffff !important;
+}
+
+.alignRightTabs a.active {
+    background: #0F2453;
+    color: #ffffff !important;
+}
+
+.resultsTabSection {
+    padding: 20px 0;
+}
+
+.paddingTop10 {
+    padding-top: 20px;
+}
+
+#sidebar.noborder {
+    border: none;
+    padding: 15px 0px;
+}
+
+.cat-widget li:before {
+    content: '';
+}
+
+.cat-widget.resultsYear ul li a.active {
+    color: #2C1D5E !important;
+}
+
+.resultImageRow {
+    padding: 15px 0;
+}
+
+.textInCenter {
+    text-align: center;
+    border: none;
+}
+
+/*news page start*/
+.fancybox-custom .fancybox-skin {
+    box-shadow: 0 0 50px #222;
+}
+
+.fancybox-inner {
+    width: 100% !important;
+    height: 100% !important;
+
+}
+
+.fancybox-opened .fancybox-skin {
+    padding: 0 !important;
+}
+
+.theFlexBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.imageWrap {
+
+    height: 150px;
+    overflow: hidden;
+    max-height: 150px;
+    min-height: 150px;
+}
+
+.imageWrap img {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: transform 0.3s ease;
+    -moz-transition: transform 0.3s ease;
+    -ms-transition: transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
+}
+
+.imageWrap:hover img {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+    -webkit-transition: transform 0.3s ease;
+    -moz-transition: transform 0.3s ease;
+    -ms-transition: transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
+}
+
+.theSmallWrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.width30 {
+    width: 30%;
+}
+
+.paginationBtn {
+    text-align: right;
+}
+
+.paginationBtn .pager {
+    text-align: right;
+}
+
+.pad0 {
+    padding: 0;
+    margin: 4px 0;
+    line-height: 1.2;
+}
+
+.onDate {
+    font-weight: bold;
+    color: #323232;
+
+}
+
+.contact-widget h4 {
+    color: #2C1D5E !important;
+}
+
+.contact-widget i {
+    background: #2C1D5E !important;
+}
+
+.logoHome {
+    width: 70px;
+}
+
+.tp-leftarrow.default {
+    background: #2C1D5E !important;
+
+}
+
+.tparrows.preview3,
+.tparrows.preview3:after {
+    background: #2C1D5E !important;
+
+}
+
+/*achievements page*/
+
+.timeline {
+    list-style: none;
+    padding: 20px 0 20px;
+    position: relative;
+}
+
+.timeline:before {
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 3px;
+    background-color: #eeeeee;
+    left: 50%;
+    margin-left: -1.5px;
+}
+
+.timeline > li {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+    content: " ";
+    display: table;
+}
+
+.timeline > li:after {
+    clear: both;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+    content: " ";
+    display: table;
+}
+
+.timeline > li:after {
+    clear: both;
+}
+
+.timeline > li > .timeline-panel {
+    width: 50%;
+    float: left;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px;
+    padding: 20px;
+    position: relative;
+    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+}
+
+.timeline > li.timeline-inverted + li:not(.timeline-inverted),
+.timeline > li:not(.timeline-inverted) + li.timeline-inverted {
+    margin-top: -60px;
+}
+
+.timeline > li:not(.timeline-inverted) {
+    padding-right: 90px;
+}
+
+.timeline > li.timeline-inverted {
+    padding-left: 90px;
+}
+
+.timeline > li > .timeline-panel:before {
+    position: absolute;
+    top: 26px;
+    right: -15px;
+    display: inline-block;
+    border-top: 15px solid transparent;
+    border-left: 15px solid #ccc;
+    border-right: 0 solid #ccc;
+    border-bottom: 15px solid transparent;
+    content: " ";
+}
+
+.timeline > li > .timeline-panel:after {
+    position: absolute;
+    top: 27px;
+    right: -14px;
+    display: inline-block;
+    border-top: 14px solid transparent;
+    border-left: 14px solid #fff;
+    border-right: 0 solid #fff;
+    border-bottom: 14px solid transparent;
+    content: " ";
+}
+
+.timeline > li > .timeline-badge {
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.4em;
+    text-align: center;
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    margin-left: -25px;
+    background-color: #999999;
+    z-index: 100;
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel {
+    float: right;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel:before {
+    border-left-width: 0;
+    border-right-width: 15px;
+    left: -15px;
+    right: auto;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel:after {
+    border-left-width: 0;
+    border-right-width: 14px;
+    left: -14px;
+    right: auto;
+}
+
+.timeline-badge.primary {
+    background-color: #2e6da4 !important;
+}
+
+.timeline-badge.success {
+    background-color: #3f903f !important;
+}
+
+.timeline-badge.warning {
+    background-color: #f0ad4e !important;
+}
+
+.timeline-badge.danger {
+    background-color: #d9534f !important;
+}
+
+.timeline-badge.info {
+    background-color: #5bc0de !important;
+}
+
+.timeline-title {
+    margin-top: 0;
+    color: inherit;
+}
+
+.timeline-body > p,
+.timeline-body > ul {
+    margin-bottom: 0;
+}
+
+.timeline-body > p + p {
+    margin-top: 5px;
+}
+
+.colorBlue {
+    color: #2C1D5E !important;
+}
+
+.theBlueBadge {
+    background: #2C1D5E !important;
+
+}
+
+.timeline > li :hover .timeline-panel {
+    border: 1px solid #2C1D5E;
+    -webkit-box-shadow: 0 1px 6px rgba(0.17, 0.11, 0.37, 0.175);
+    box-shadow: 0 1px 6px rgba(0.17, 0.11, 0.37, 0.175);
+}
+
+/*achievements page*/
+.ulTick{
+    margin: 0;
+    padding: 0;
+    padding-bottom: 10px;
+}
+
+.lessPaddingForPara p{
+    padding-bottom: 10px;
+}
+
+.ulTick li {
+    list-style-type: none;
+    margin-right: 20px;
+    /*float: left;*/
+
+
+}
+.ulTick li span{
+    color: #2C1D5E;
+    font-weight: 600;
+    font-size: 14px;
+}
+.ulTick li:before {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    content: "\f006";
+    padding-right: 10px;
+    color: #2C1D5E;
+}
+
+.dirImages img{
+    float: left;
+    display: inline-block;
+}
+.dirImages span{
+    display: block;
+}
+.testi-style-3 small{
+    color: #fff;
+
+}
+.lessMarginAbout{
+    margin-top: 20px;
+}
+.testi-style-3 .lead.font15{
+    font-size: 15px;
+}
+.entry:hover .team-desc.noHover{
+    position: absolute;
+}
+.latest-tweets li a{
+    color: #cbcbcd !important;
+    font-size: 14px;
+}
+
+/*news page end*/
+
+@media (max-width: 768px) {
+    .contactwrap {
+        display: block !important;
+    }
+
+    .contactwrap ul.list-inline li {
+        display: none;
+    }
+
+    .contactwrap ul.list-inline li.dropdown {
+        display: block;
+    }
+
+}
+
