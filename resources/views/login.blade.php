@@ -63,7 +63,7 @@
             <form class="login-form" action="{{route('post.login.page')}}" method="post">
                 <div class="row">
                     <div class="input-field col s12 center">
-                        <img src="{{url('resources/assets/images/logo.jpg')}}" alt="" class="circle responsive-img valign profile-image-login">
+                        <img src="{{url('resources/assets/images/logo.png')}}" alt="" class="circle responsive-img valign profile-image-login">
                         <p class="center login-form-text">your Credentials Here</p>
                     </div>
                 </div>

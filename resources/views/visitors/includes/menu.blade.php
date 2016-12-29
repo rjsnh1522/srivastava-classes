@@ -51,7 +51,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{route('get.visitors.homePage')}}"><img class="img-responsive logoHome" src="{{url('resources/assets/images/logo.jpg')}}" alt=""></a>
+                <a class="navbar-brand" href="{{route('get.visitors.homePage')}}"><img class="img-responsive logoHome" src="{{url('resources/assets/images/logo.png')}}" alt=""></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
