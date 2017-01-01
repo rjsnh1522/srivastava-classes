@@ -123,7 +123,7 @@
                                             <td>{{$studentList->mobile}}</td>
                                             <td>{{$studentList->email}}</td>
                                             <td>
-                                                
+
                                                 <img src="{{url('resources/assets/images/student',$studentList->image)}}" alt="">
 
                                             </td>
