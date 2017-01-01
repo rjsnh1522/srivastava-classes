@@ -190,6 +190,7 @@ class TimeTableController extends Controller
     {
 
         $data['pageTitle'] = 'Schedule for year '.$year;
+        $data['year']=$year;
 
         $data['dataSortedTable'] = TimeTables::select('*')->where('batch_year', '=', $year)->get();
 
@@ -322,6 +323,36 @@ class TimeTableController extends Controller
 
 //        return $data;
         }
+    }
+
+
+
+    public function postDeleteTimeTableSession($session){
+
+
+        $data['deleteTimetable']=TimeTableYear::where('batch_year',$session)->delete();
+
+        if ($data['deleteTimetable'] == '1') {
+
+            $data['timeTable']=TimeTables::where('batch_year',$session)->delete();
+
+            if($data['timeTable']=='1'){
+
+                Session::flash('success', 'Schedule Deleted Successfully');
+                return redirect()->back();
+            }
+            else{
+                Session::flash('success', 'Schedule Deleted Successfully');
+                return redirect()->back();
+            }
+
+            Session::flash('fail', 'Oops Something went wrong');
+            return redirect()->back();
+        } else {
+            Session::flash('fail', 'Oops Something went wrong');
+            return redirect()->back();
+        }
+
     }
 
 

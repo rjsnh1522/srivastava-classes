@@ -24,8 +24,15 @@ class TimeTableController extends Controller
         $selectedSubject = Input::get('selectedSubject');
         $selectedClass = Input::get('selectedClass');
         $yearToSearch = date('Y');
+
+//            return $yearToSearch;
+//        return Input::all();
         if ($selectedSubject != "" && $selectedClass != "") {
-            $data['dataTimeTable'] = TimeTables::where('batch_year', $yearToSearch)->where('class', '=', $selectedClass)->where('subject', '=', $selectedSubject)->get();
+            $data['dataTimeTable'] = TimeTables::where('batch_year', $yearToSearch)->where('class', '=', $selectedClass)->where('subject', '=','            $data[\'dataTimeTable\'] = TimeTables::where(\'batch_year\', $yearToSearch)->where(\'class\', \'=\', $selectedClass)->where(\'subject\', \'=\', Mathematics)->get();
+')->get();
+
+            return $data;
+
             Session::flash('dataForTable', 'data');
             return redirect()->back()->withInput()->with('dataTimeTable', $data['dataTimeTable']);
         } else {

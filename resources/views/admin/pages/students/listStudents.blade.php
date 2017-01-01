@@ -104,7 +104,7 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Class</th>
+                                        <th>Mobile</th>
                                         <th>Class</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -122,11 +122,26 @@
                                             <td>{{$studentList->email}}</td>
                                             <td>{{$studentList->mobile}}</td>
                                             <td>{{$studentList->email}}</td>
-                                            <td>{{$studentList->image}}</td>
+                                            <td>
+                                                
+                                                <img src="{{url('resources/assets/images/student',$studentList->image)}}" alt="">
+
+                                            </td>
                                             <td>
                                                 <p>
-                                                    <input type="checkbox" id="test5" name="selectMe"/>
-                                                    <label for="test5"></label>
+                                                <div class="switch">
+                                                    <form action="#" method="post">
+                                                        <label>
+                                                            <input type="hidden" name="_token" value="{{Session('_token')}}">
+                                                            <input type="checkbox" name="status" @if(1==1) checked='checked' @endif onChange="this.form.submit()">
+                                                            <span class="lever"></span>
+
+                                                        </label>
+                                                    </form>
+                                                </div>
+                                                <span>
+                                                    <a href="#"><i class="fa fa-paper-plane-o"></i></a>
+                                                </span>
                                                 </p>
 
                                             </td>

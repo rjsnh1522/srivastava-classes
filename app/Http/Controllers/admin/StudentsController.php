@@ -16,9 +16,8 @@ class StudentsController extends Controller
 
         $data['pageTitle']='Student List';
         $data['allStudents']=DB::table('users')
-            ->leftjoin('students','users.email','=','students.email')
+            ->leftjoin('students','users.email','=','students.email')->where('user_type','4')
             ->get();
-
 
         return view('admin.pages.students.listStudents',compact('data'));
     }

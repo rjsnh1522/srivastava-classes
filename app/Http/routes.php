@@ -285,6 +285,11 @@ Route::group(['middleware' => 'student','prefix' => 'student'], function () {
                 'uses' => 'admin\TimeTableController@postEditScheduleForm']);
 
 
+        Route::get('/delete-timetable-session/{session}',
+            ['as' => 'delete.timetable.session',
+                'uses' => 'admin\TimeTableController@postDeleteTimeTableSession']);
+
+
 //    results
 
         Route::get('/all-results',

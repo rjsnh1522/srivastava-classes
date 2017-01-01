@@ -55,10 +55,16 @@
                     </div>
                 @endif
 
+
+
+                <span class="new removeNew badge">
+                                 <a href="{{route('add.timeTable',$data['year'])}}">Add Batch</a>
+                             </span>
                     <div id="table-datatables">
                         <div class="row">
                             <div class="col s12 m12 l12">
                                 <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+
                                     <thead>
                                     <tr>
                                         <th>#</th>

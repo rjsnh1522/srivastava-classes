@@ -188,7 +188,8 @@
                     <div id="responsive-table">
                          <h5>Batch Schedule for {{$data['yearBatch']->batch_year}}
                              <span class="new removeNew badge">
-                                 <a href="{{route('view.schedule.table',$data['yearBatch']->batch_year)}}">View All</a></span>
+                                 <a href="{{route('view.schedule.table',$data['yearBatch']->batch_year)}}">View All</a>
+                             </span>
                          </h5>
                             <div class="col s12 m12 l12">
                                 <table class="responsive-table highlight">

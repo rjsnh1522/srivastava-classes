@@ -44,22 +44,35 @@ class LoginController extends Controller
         }
         else{
             if(Auth::attempt($data)){
+
+
+
+//                return 1;
                 $checkStatus=User::select('*')->where('email',$email)->first();
+
+//                return $checkStatus->user_type;
+
                 Session::put('email',$checkStatus->email);
                 Session::put('user_type',$checkStatus->user_type);
 
                 if(Session::get('user_type')!=4){
+//                    return $checkStatus->email;
                    $dataAdmin=Admin::where('email',$checkStatus->email)->first();
+//                    return $dataAdmin;
+
+
+//                    return $dataAdmin->image;
                    Session::put('profilePic',$dataAdmin->image);
                    Session::put('name',$dataAdmin->name);
 
 
                 }
                 else{
+
                     $dataStudent=Student::where('email',$checkStatus->email)->first();
                     if($dataStudent==''){
 
-                        return 1;
+//                        return 1;
                         Session::flash('wait', 'Registration is not approved!!');
                         return redirect()->back();
                     }else{

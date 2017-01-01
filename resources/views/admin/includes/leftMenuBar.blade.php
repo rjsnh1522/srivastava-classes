@@ -3,7 +3,7 @@
         <li class="user-details cyan darken-2">
             <div class="row">
                 <div class="col col s4 m4 l4">
-                    @if(Session::has('profilePic') || Session::has('profilePic')!='')
+                    @if(!is_null(Session::get('profilePic')))
                     <img src="{{url('resources/assets/images/admin/',Session::get('profilePic'))}}" alt=""
                          class="circle responsive-img valign profile-image">
                         @else
