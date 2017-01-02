@@ -109,6 +109,16 @@
                                     </div>
 
                                     <div class="input-field col s12">
+                                        <select name="selectedClass">
+                                            <option value="{{$data['studentInfo']->class}}" disabled selected>{{$data['studentInfo']->class}}</option>
+                                            <option value="Eleven">Eleven</option>
+                                            <option value="Twelve">Twelve</option>
+                                            <option value="Target">Target</option>
+                                        </select>
+                                        <label>Select Class</label>
+                                    </div>
+
+                                    <div class="input-field col s12">
                                         <textarea id="address" name="address" class="materialize-textarea validate" data-error=".error">{{$data['studentInfo']->address}}</textarea>
                                         <label for="address">Address</label>
                                         <div class="error">{{$errors->first('address')}}</div>

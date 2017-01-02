@@ -49,6 +49,7 @@ class StudentController extends Controller
         $scCol = Input::get('schoolOrCollege');
         $address = Input::get('address');
         $profiePic = Input::file('profiePic');
+        $selectedClass=Input::get('selectedClass');
 
 
         $data = [
@@ -60,7 +61,8 @@ class StudentController extends Controller
             'GaurdianPhone' => $gPhone,
             'schoolOrCollege' => $scCol,
             'address' => $address,
-            'profiePic' => $profiePic
+            'profiePic' => $profiePic,
+            'selectedClass'=>$selectedClass
         ];
 
         $rules = [
@@ -72,7 +74,8 @@ class StudentController extends Controller
             'GaurdianPhone' => 'required|digits:10',
             'schoolOrCollege' => 'required',
             'address' => 'required',
-            'profiePic' => 'image'
+            'profiePic' => 'image',
+            'selectedClass'=>'required'
         ];
 
 
@@ -128,6 +131,7 @@ class StudentController extends Controller
                 $newStudInfo->g_contact = $gPhone;
                 $newStudInfo->address = $address;
                 $newStudInfo->school_college = $scCol;
+                $newStudInfo->class=$selectedClass;
                 $newStudInfo->save();
                 Session::set('name', $name);
                 Session::set('profilePic', $imageNewName);
@@ -142,6 +146,7 @@ class StudentController extends Controller
                 $studentInfo->g_contact = $gPhone;
                 $studentInfo->address = $address;
                 $studentInfo->school_college = $scCol;
+                $studentInfo->class=$selectedClass;
                 $studentInfo->save();
                 Session::set('name', $name);
                 Session::set('profilePic', $imageNewName);

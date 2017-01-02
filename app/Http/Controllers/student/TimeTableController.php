@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
@@ -24,14 +25,12 @@ class TimeTableController extends Controller
         $selectedSubject = Input::get('selectedSubject');
         $selectedClass = Input::get('selectedClass');
         $yearToSearch = date('Y');
+        $oneYearlater=$yearToSearch+1;
+        $session= $yearToSearch.'-'.$oneYearlater;
 
-//            return $yearToSearch;
-//        return Input::all();
+
         if ($selectedSubject != "" && $selectedClass != "") {
-            $data['dataTimeTable'] = TimeTables::where('batch_year', $yearToSearch)->where('class', '=', $selectedClass)->where('subject', '=','            $data[\'dataTimeTable\'] = TimeTables::where(\'batch_year\', $yearToSearch)->where(\'class\', \'=\', $selectedClass)->where(\'subject\', \'=\', Mathematics)->get();
-')->get();
-
-            return $data;
+            $data['dataTimeTable'] = TimeTables::where('batch_year', $session)->where('class', '=', $selectedClass)->where('subject', '=',$selectedSubject)->get();
 
             Session::flash('dataForTable', 'data');
             return redirect()->back()->withInput()->with('dataTimeTable', $data['dataTimeTable']);
@@ -46,8 +45,21 @@ class TimeTableController extends Controller
     public function postStudentBatchResponse($id,$sub){
 
 
+        $studEmail=Session::get('email');
+
+        $data['findStudent']=DB::table('students')->leftjoin('students_info','students.email','=','students_info.email')
+                     ->leftjoin('student_has_batches','students.email','=','student_has_batches.email')
+                     ->where('students.email','=',$studEmail)->first();
+
+//        $findTimetable=DB::table('')
 
 
+
+
+
+
+        return $data['findStudent']->email;
+        return $id.' '.$sub.' '.$studEmail;
 
 
     }

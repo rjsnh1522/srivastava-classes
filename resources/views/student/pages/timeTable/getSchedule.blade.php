@@ -106,10 +106,10 @@
                                         <th>Batch Name</th>
                                         <th>Subject</th>
                                         <th>Class</th>
-                                        <th>Day One</th>
-                                        <th>Day One Time</th>
-                                        <th>Day Two</th>
-                                        <th>Day Two Time</th>
+                                        <th>Day 1</th>
+                                        <th>Day 1 Time</th>
+                                        <th>Day 2</th>
+                                        <th>Day 2 Time</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
