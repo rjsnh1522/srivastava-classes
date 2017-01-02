@@ -28,26 +28,24 @@
                 </div>
             </div>
         </li>
-        <li class="bold active"><a href="" class="waves-effect waves-cyan"><i
+        <li class="bold active">
+            <a href="{{route('get.student.dashBoard')}}" class="waves-effect waves-cyan"><i
                         class="mdi-action-dashboard"></i> Dashboard</a>
         </li>
 
-        <li class="bold"><a href="" class="waves-effect waves-cyan"><i
-                        class="mdi-action-dashboard"></i>Achievements</a>
-        </li>
 
         <li class="bold"><a href="{{route('student.complete.profile')}}" class="waves-effect waves-cyan"><i
                         class="mdi-action-dashboard"></i>Profile</a>
         </li>
 
-        <li class="bold"><a href="" class="waves-effect waves-cyan"><i
+        <li class="bold"><a href="#" class="waves-effect waves-cyan"><i
                         class="mdi-communication-email"></i> Mailbox <span class="new badge">4</span></a>
         </li>
         <li class="bold"><a href="{{route('get.time.table')}}" class="waves-effect waves-cyan"><i
                         class="mdi-editor-insert-invitation"></i> Time Table</a>
         </li>
 
-        <li class="bold"><a href="" class="waves-effect waves-cyan"><i
+        <li class="bold"><a href="#" class="waves-effect waves-cyan"><i
                         class="mdi-editor-insert-invitation"></i>Something Else</a>
         </li>
 
