@@ -127,10 +127,15 @@
                                             <td>{{$timeTable->day_one_time}}</td>
                                             <td>{{$timeTable->day_two}}</td>
                                             <td>{{$timeTable->day_two_time}}</td>
+
                                             <td>
                                                 <p>
                                                 <form action="{{route('save.batch.response',[$timeTable->schedule_id,$timeTable->subject])}}" method="post">
-                                                    <input type="checkbox" id="test{{$i}}" name="selectMe" onChange="this.form.submit()"/>
+                                                    <input type="checkbox" id="test{{$i}}"
+                                                           @foreach(Session::get('findStudent') as $l)
+                                                           @if($timeTable->schedule_id == $l->phy_id || $timeTable->schedule_id == $l->math_id || $timeTable->schedule_id == $l->chem_id || $timeTable->schedule_id == $l->bio_id) checked @else @endif
+                                                           @endforeach
+                                                           name="selectMe" onChange="this.form.submit()"/>
                                                     <label for="test{{$i}}"></label>
                                                     <input type="hidden" name="_token" value="{{Session('_token')}}">
                                                 </form>

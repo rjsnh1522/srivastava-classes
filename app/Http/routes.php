@@ -115,23 +115,6 @@ Route::group(['middleware' => 'student','prefix' => 'student'], function () {
         ['as' => 'get.login.page',
             'uses' => 'LoginController@getLoginPage']);
 
-//   Route::get('/login',function(){
-//
-//       $user=Auth::user();
-//       if(empty($user)){
-//
-////           return '12';
-//           return view('login');
-//       }
-//       else{
-//           return redirect()->back();
-//       }
-//
-//
-//   });
-
-
-
     Route::get('/register',
         ['as' => 'get.register.page',
             'uses' => 'LoginController@getRegisterPage']);

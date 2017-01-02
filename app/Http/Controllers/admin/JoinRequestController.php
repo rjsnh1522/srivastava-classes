@@ -58,14 +58,17 @@ class JoinRequestController extends Controller
 
             $findStud->status=1;
             $findStud->save();
+
             $student=new Student();
             $student->email=$findStud->email;
             $student->mobile=$findStud->mobile;
             $student->accepted_by=Session::get('name');
             $student->save();
+
             $studentInfo=new StudentInfo();
             $studentInfo->email=$findStud->email;
             $studentInfo->save();
+
             $studentBatch=new StudentHasBatch();
             $studentBatch->email=$findStud->email;
             $studentBatch->save();

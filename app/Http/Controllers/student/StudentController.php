@@ -123,7 +123,7 @@ class StudentController extends Controller
             $studentInfo = StudentInfo::where('email', $email)->first();
             if (is_null($studentInfo)) {
                 //no data available for that student create obj and save data
-                $newStudInfo = new StudentInfo();
+                $newStudInfo = StudentInfo::where('email', $email)->first();
                 $newStudInfo->email = $email;
                 $newStudInfo->dob = $dob;
                 $newStudInfo->f_name = $fname;
@@ -138,7 +138,6 @@ class StudentController extends Controller
                 Session::flash('success', 'Thank you!! for submitting your data');
                 return redirect()->back();
             } else {
-
                 $studentInfo->email = $email;
                 $studentInfo->dob = $dob;
                 $studentInfo->f_name = $fname;
@@ -154,7 +153,6 @@ class StudentController extends Controller
                 return redirect()->back();
 
             }
-
 
             Session::flash('fail', 'Something went wrong ');
             return redirect()->back();
