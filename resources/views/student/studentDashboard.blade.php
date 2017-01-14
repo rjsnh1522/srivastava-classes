@@ -2,11 +2,11 @@
 
 
 @section('meta')
-    @endsection
+@endsection
 
-    @section('title')
+@section('title')
     Srivastava Classes- Student Dashboard
-    @endsection
+@endsection
 
 
 @section('css')
@@ -92,28 +92,41 @@
                                 <li class="collection-item avatar">
                                     <i class="circle light-blue darken-2 mdi-editor-insert-invitation"></i>
                                     <span class="collection-header">Time Table</span>
-                                    <p>Your selected batches </p>
+                                    <p>Your selected batches for class {{ $data['studentInfo']->class}}</p>
                                     <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>
                                 </li>
-                                @foreach($data['timetable'] as $tt)
-                                <li class="collection-item">
-                                    <div class="row">
-                                        <div class="col s4">
-                                            <p class="collections-title">{{$tt->subject}}</p>
-                                            <p class="collections-content">{{$tt->faculty}}</p>
-                                        </div>
-                                        <div class="col s4">
-                                            <span class="task-cat @if($tt->subject=="Physics")pink @elseif($tt->subject=="Chemistry")  teal @elseif($tt->subject=="Mathematics") cyan @elseif($tt->subject=="Biology") green @endif ">{{$tt->day_one}}</span>
-                                            <p class="collections-content">{{$tt->day_one_time}}</p>
 
+                                @if(!empty(array_filter($data['timetable'])))
+                                    @foreach($data['timetable'] as $tt)
+                                        <li class="collection-item">
+                                            <div class="row">
+                                                <div class="col s4">
+                                                    <p class="collections-title">{{$tt->subject}}</p>
+                                                    <p class="collections-content">{{$tt->faculty}}</p>
+                                                </div>
+                                                <div class="col s4">
+                                                    <span class="task-cat @if($tt->subject=="Physics")pink @elseif($tt->subject=="Chemistry")  teal @elseif($tt->subject=="Mathematics") cyan @elseif($tt->subject=="Biology") green @endif ">{{$tt->day_one}}</span>
+                                                    <p class="collections-content">{{$tt->day_one_time}}</p>
+
+                                                </div>
+                                                <div class="col s4">
+                                                    <span class="task-cat @if($tt->subject=="Physics")pink @elseif($tt->subject=="Chemistry")  teal @elseif($tt->subject=="Mathematics") cyan @elseif($tt->subject=="Biology") green @endif ">{{$tt->day_two}}</span>
+                                                    <p class="collections-content">{{$tt->day_two_time}}</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                @else
+                                    <li class="collection-item">
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <p class="collections-title">No Batch Selected yet</p>
+                                                <p class="collections-content"><a href="{{route('get.time.table')}}" class="pink-text">Click here to select your Batches</a></p>
+                                            </div>
                                         </div>
-                                        <div class="col s4">
-                                            <span class="task-cat @if($tt->subject=="Physics")pink @elseif($tt->subject=="Chemistry")  teal @elseif($tt->subject=="Mathematics") cyan @elseif($tt->subject=="Biology") green @endif ">{{$tt->day_two}}</span>
-                                            <p class="collections-content">{{$tt->day_two_time}}</p>
-                                        </div>
-                                    </div>
-                                </li>
-                               @endforeach
+                                    </li>
+                                @endif
+
                             </ul>
                         </div>
                     </div>
@@ -127,13 +140,13 @@
 
 
 
-    @endsection
+@endsection
 
 
 
 
 @section('script')
-    @endsection
+@endsection
 
 
 
