@@ -79,10 +79,16 @@ class TimeTableController extends Controller
                     $assignBatch->save();
                     Session::flash('success', 'Batch Added successfully');
                     return redirect()->back();
-                }else{
+                }elseif($assignBatch->phy_id==$id){
                     $assignBatch->phy_id='';
                     $assignBatch->save();
                     Session::flash('success', 'Batch removed successfully');
+                    return redirect()->back();
+                }
+                else{
+//                    $assignBatch->phy_id=$assignBatch->phy_id;
+//                    $assignBatch->save();
+                    Session::flash('fail', 'You have already selected a Physics Batch');
                     return redirect()->back();
                 }
                 break;
@@ -92,10 +98,16 @@ class TimeTableController extends Controller
                     $assignBatch->save();
                     Session::flash('success', 'Batch added successfully');
                     return redirect()->back();
-                }else{
+                }elseif($assignBatch->chem_id==$id){
                     $assignBatch->chem_id='';
                     $assignBatch->save();
                     Session::flash('success', 'Batch removed successfully');
+                    return redirect()->back();
+                }
+                else{
+//                    $assignBatch->phy_id=$assignBatch->phy_id;
+//                    $assignBatch->save();
+                    Session::flash('fail', 'You have already selected a Chemistry Batch');
                     return redirect()->back();
                 }
                 break;
@@ -105,10 +117,14 @@ class TimeTableController extends Controller
                     $assignBatch->save();
                     Session::flash('success', 'Batch added successfully');
                     return redirect()->back();
-                }else{
+                }elseif($assignBatch->math_id==$id){
                     $assignBatch->math_id='';
                     $assignBatch->save();
                     Session::flash('success', 'Batch removed successfully');
+                    return redirect()->back();
+                }
+                else{
+                    Session::flash('fail', 'You have already selected a Mathematics Batch');
                     return redirect()->back();
                 }
                 break;
@@ -118,12 +134,16 @@ class TimeTableController extends Controller
                     $assignBatch->save();
                     Session::flash('success', 'Batch added successfully');
                     return redirect()->back();
-                }else{
+                }elseif($assignBatch->bio_id==$id){
                     $assignBatch->bio_id='';
                     $assignBatch->save();
                     Session::flash('success', 'Batch removed successfully');
                     return redirect()->back();
                 }
+                else{
+                    Session::flash('fail', 'You have already selected a Biology Batch');
+                    return redirect()->back();
+               }
                 break;
             default :
                 Session::flash('fail', 'Oops Something went wrong');
