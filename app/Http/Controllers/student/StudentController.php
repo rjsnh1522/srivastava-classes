@@ -164,4 +164,14 @@ class StudentController extends Controller
     } //function end
 
 
+
+    public function getChangePassword(){
+
+        $data['pageTitle']='Change password';
+        $data['formName']='Change password';
+
+        return view('student.pages.profile.change_password',compact('data'));
+    }
+
+
 }

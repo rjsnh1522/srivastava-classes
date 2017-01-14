@@ -54,6 +54,14 @@ Route::group(['middleware' => 'student','prefix' => 'student'], function () {
         ['as' => 'save.timetable',
             'uses' => 'student\StudentController@postCompleteProfile']);
 
+    //change password
+
+    Route::get('/change-password',
+        ['as' => 'student.change.password',
+            'uses' => 'student\StudentController@getChangePassword']);
+
+
+
 
 
 });

@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-    Srivastava Classes- Student Dashboard
+    Srivastava Classes - Student Dashboard
 @endsection
 
 

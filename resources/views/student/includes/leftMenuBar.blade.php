@@ -15,8 +15,6 @@
                     <ul id="profile-dropdown" class="dropdown-content">
                         <li><a href="{{route('student.complete.profile')}}"><i class="mdi-action-face-unlock"></i> Profile</a>
                         </li>
-                        <li><a href="#"><i class="mdi-action-settings"></i> Settings</a>
-                        </li>
                         <li class="divider"></li>
                         <li><a href="{{route('logout.me')}}"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
                         </li>
@@ -37,6 +35,9 @@
         <li class="bold"><a href="{{route('student.complete.profile')}}" class="waves-effect waves-cyan"><i
                         class="mdi-action-dashboard"></i>Profile</a>
         </li>
+        <li class="bold"><a href="{{route('student.change.password')}}" class="waves-effect waves-cyan"><i
+                        class="mdi-editor-insert-invitation"></i>Change password</a>
+        </li>
 
         <li class="bold"><a href="#" class="waves-effect waves-cyan"><i
                         class="mdi-communication-email"></i> Mailbox <span class="new badge">4</span></a>
@@ -45,9 +46,7 @@
                         class="mdi-editor-insert-invitation"></i> Time Table</a>
         </li>
 
-        <li class="bold"><a href="#" class="waves-effect waves-cyan"><i
-                        class="mdi-editor-insert-invitation"></i>Something Else</a>
-        </li>
+
 
         <li class="bold"><a href="{{route('get.chat.forum')}}" class="waves-effect waves-cyan"><i
                         class="mdi-editor-insert-invitation"></i>Chat</a>
