@@ -236,3 +236,9 @@ textarea.materialize-textarea[readonly="readonly"]{
 .powerOff{
     color: red;
 }
+.margin20{
+    margin-bottom: 20px;
+}
+.smallSpaceBelow{
+    padding-bottom: 10px;
+}

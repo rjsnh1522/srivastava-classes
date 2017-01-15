@@ -4,11 +4,14 @@ namespace App\Http\Controllers\student;
 
 use App\Student;
 use App\StudentInfo;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -39,9 +42,10 @@ class StudentController extends Controller
     {
 
 
-//        return $email;
+
         $name = Input::get('name');
         $dob = Input::get('dob');
+        $gender=Input::get('gender');
         $mobile = Input::get('mobile');
         $fname = Input::get('FatherName');
         $mname = Input::get('MotherName');
@@ -55,6 +59,7 @@ class StudentController extends Controller
         $data = [
             'name' => $name,
             'dob' => $dob,
+            'gender'=>$gender,
             'mobile' => $mobile,
             'FatherName' => $fname,
             'MotherName' => $mname,
@@ -68,6 +73,7 @@ class StudentController extends Controller
         $rules = [
             'name' => 'required',
             'dob' => 'required',
+            'gender'=>'required',
             'mobile' => 'required|digits:10',
             'FatherName' => 'required',
             'MotherName' => 'required',
@@ -126,10 +132,11 @@ class StudentController extends Controller
                 $newStudInfo = StudentInfo::where('email', $email)->first();
                 $newStudInfo->email = $email;
                 $newStudInfo->dob = $dob;
+                $newStudInfo->gender=$gender;
                 $newStudInfo->f_name = $fname;
                 $newStudInfo->m_name = $mname;
                 $newStudInfo->g_contact = $gPhone;
-                $newStudInfo->address = $address;
+                $newStudInfo->address = trim($address);
                 $newStudInfo->school_college = $scCol;
                 $newStudInfo->class=$selectedClass;
                 $newStudInfo->save();
@@ -140,10 +147,11 @@ class StudentController extends Controller
             } else {
                 $studentInfo->email = $email;
                 $studentInfo->dob = $dob;
+                $studentInfo->gender=$gender;
                 $studentInfo->f_name = $fname;
                 $studentInfo->m_name = $mname;
                 $studentInfo->g_contact = $gPhone;
-                $studentInfo->address = $address;
+                $studentInfo->address = trim($address);
                 $studentInfo->school_college = $scCol;
                 $studentInfo->class=$selectedClass;
                 $studentInfo->save();
@@ -170,14 +178,57 @@ class StudentController extends Controller
         $data['pageTitle']='Change password';
         $data['formName']='Change password';
 
-
-//        selecting batches
-
-
-
-
-
         return view('student.pages.profile.change_password',compact('data'));
+    }
+
+
+    public function postChangedPassword(){
+
+        $email = Session::get('email');
+
+
+        $oPass = Input::get('oldPassword');
+        $nPass = Input::get('password');
+        $cfpassword = Input::get('password_confirmation');
+
+        $data = [
+            'email' => $email,
+            'password' => $oPass
+        ];
+
+
+        if (Auth::attempt($data)) {
+            $data2 = [
+                'password' => $nPass,
+                'password_confirmation' => $cfpassword
+            ];
+            $rule = [
+                'password' => 'required|min:8',
+                'password_confirmation' => 'required|same:password'
+            ];
+
+            $validator = Validator::make($data2, $rule);
+
+            if ($validator->fails()) {
+                Session::flash('fail', 'Repeat password must be same !!');
+                return redirect()->back()->withErrors($validator);
+
+            } else {
+
+                $finduser=User::where('email',$email)->first();
+                $finduser->password=Hash::make($nPass);
+                $finduser->save();
+
+                Session::flash('success', 'Password Changed successful!!');
+                return redirect()->back();
+
+            }
+        } else {
+
+            Session::flash('fail', 'Password does not match!!');
+            return redirect()->back();
+
+        }
     }
 
 

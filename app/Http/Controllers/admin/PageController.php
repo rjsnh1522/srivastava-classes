@@ -17,14 +17,6 @@ class PageController extends Controller
     public function getAdminDashboard(Request $request){
 
 
-
-//      $img=Session::get('profilePic');
-//
-//        if(empty(array_filter((array)$img)))
-//            return 123;
-//        else
-//            return 456;
-
             $data['totalStudent']=User::where('user_type',4)->count();
             $data['totalAdmin']=User::where('user_type',3)->count();
 

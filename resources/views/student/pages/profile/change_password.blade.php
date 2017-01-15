@@ -58,23 +58,23 @@
                     <div class="card-panel">
                         <h4 class="header2">{{$data['formName']}}</h4>
                         <div class="row">
-                            <form class="achievementsForm right-alert" id="adminProfileForm" method="post" action="#" enctype="multipart/form-data">
+                            <form class="achievementsForm right-alert" id="adminProfileForm" method="post" action="{{route('post.change.stud.pass')}}" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <label for="curpassword">Old password*</label>
-                                        <input id="curpassword" name="curpassword" type="text" data-error=".error" value="">
-                                        <div class="error">{{$errors->first('curpassword')}}</div>
+                                        <label for="oldPassword">Old password*</label>
+                                        <input id="oldPassword" name="oldPassword" type="password" data-error=".error" value="">
+                                        <div class="error">{{$errors->first('oldPassword')}}</div>
                                     </div>
 
                                     <div class="input-field col s12">
-                                        <label for="npasword">New password*</label>
-                                        <input id="npasword" name="pasword" type="text" data-error=".error"  value="">
-                                        <div class="error">{{$errors->first('pasword')}}</div>
+                                        <label for="password">New password*</label>
+                                        <input id="password" name="password" type="password" data-error=".error"  value="">
+                                        <div class="error">{{$errors->first('password')}}</div>
                                     </div>
 
                                     <div class="input-field col s12">
                                         <label for="dob">Confirm new password*</label>
-                                        <input type="text" name="password_confirmation" data-error=".error" value="">
+                                        <input type="password" name="password_confirmation" data-error=".error" value="">
                                         <div class="error">{{$errors->first('password_confirmation')}}</div>
                                     </div>
 

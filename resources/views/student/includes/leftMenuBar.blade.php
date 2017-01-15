@@ -48,13 +48,13 @@
 
 
 
-        <li class="bold"><a href="{{route('get.chat.forum')}}" class="waves-effect waves-cyan"><i
-                        class="mdi-editor-insert-invitation"></i>Chat</a>
+        {{--<li class="bold"><a href="{{route('get.chat.forum')}}" class="waves-effect waves-cyan"><i--}}
+                        {{--class="mdi-editor-insert-invitation"></i>Chat</a>--}}
 
-        </li>
+        {{--</li>--}}
 
-        <li class="bold"><a href="{{route('logout.me')}}" class="waves-effect waves-cyan"><i
-                        class="mdi-editor-insert-invitation"></i>Logout</a>
+        <li class="bold"><a href="{{route('logout.me')}}" class="waves-effect waves-cyan">
+                <i class="fa fa-power-off powerOff"></i>Logout</a>
         </li>
 
     </ul>

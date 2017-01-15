@@ -11,7 +11,8 @@
                     <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Search"/>
                 </div>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{{route('logout.me')}}"  class="waves-effect waves-block waves-light"><i class="mdi-hardware-keyboard-tab"></i></a>
+                    <li><a href="{{route('logout.me')}}"  class="waves-effect waves-block waves-light">
+                            <i class="fa fa-power-off powerOff fa-2x"></i></a>
                     </li>
                 </ul>
 
