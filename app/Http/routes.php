@@ -396,6 +396,16 @@ Route::group(['middleware' => 'student','prefix' => 'student'], function () {
             ['as' => 'get.student.table',
                 'uses' => 'admin\StudentsController@getAllStudents']);
 
+        Route::get('/student-details/{email}',
+            ['as' => 'get.view.student',
+                'uses' => 'admin\StudentsController@getViewSingleStudents']);
+
+        Route::post('/student-disable/{email}',
+            ['as' => 'post.disable.student',
+                'uses' => 'admin\StudentsController@postDisableStudent']);
+
+
+
 
 
 

@@ -190,15 +190,45 @@ textarea.materialize-textarea:focus:not([readonly]) + label{
 .btn-floating{
     background-color:#2C1D5E;
 }
-.switch label input[type=checkbox]:checked + .lever:after{
-    background-color:#2C1D5E;
+/*.switch label input[type=checkbox]:checked + .lever:after{*/
+    /*background-color:#2C1D5E;*/
 
-}
+/*}*/
 
-.switch label input[type=checkbox]:checked + .lever{
-    background-color: #97b2e3;
-}
+/*.switch label input[type=checkbox]:checked + .lever{*/
+    /*background-color: #97b2e3;*/
+/*}*/
 
 ul.side-nav.leftside-navigation li.user-details #profile-dropdown a{
     padding: 8px 10px;
+}
+
+.viewStudent{
+    display: block;
+    text-align: center;
+    margin-top: .8em;
+}
+.text-center{
+    text-align: center;
+}
+.studentListImage{
+    height: 70px;
+}
+
+#singleStudentDetails input[type=text]:disabled,
+input[type=text][readonly="readonly"],
+input[type=password]:disabled,
+input[type=password][readonly="readonly"],
+input[type=email]:disabled, input[type=email][readonly="readonly"],
+input[type=url]:disabled, input[type=url][readonly="readonly"],
+input[type=time]:disabled, input[type=time][readonly="readonly"],
+input[type=date]:disabled, input[type=date][readonly="readonly"],
+input[type=datetime-local]:disabled,
+input[type=datetime-local][readonly="readonly"],
+input[type=tel]:disabled, input[type=tel][readonly="readonly"],
+input[type=number]:disabled, input[type=number][readonly="readonly"],
+input[type=search]:disabled, input[type=search][readonly="readonly"],
+textarea.materialize-textarea:disabled,
+textarea.materialize-textarea[readonly="readonly"]{
+    color: rgba(0, 0, 0, 0.870588);
 }

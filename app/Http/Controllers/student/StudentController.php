@@ -170,6 +170,13 @@ class StudentController extends Controller
         $data['pageTitle']='Change password';
         $data['formName']='Change password';
 
+
+//        selecting batches
+
+
+
+
+
         return view('student.pages.profile.change_password',compact('data'));
     }
 

@@ -93,7 +93,7 @@ class LoginController extends Controller
                 }
 
                 if($checkStatus['user_type']=='4'){
-                    if($checkStatus['status']=='0'){
+                    if($checkStatus['status']=='0' || $checkStatus['status']=='2' ){
                         Session::flash('wait', 'Registration is not approved!!');
                         return redirect()->back();
                     }

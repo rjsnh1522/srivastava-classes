@@ -106,7 +106,7 @@
                                         <th>Email</th>
                                         <th>Mobile</th>
                                         <th>Class</th>
-                                        <th>Status</th>
+                                        <th>image</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -121,28 +121,28 @@
                                             <td>{{$studentList->name}}</td>
                                             <td>{{$studentList->email}}</td>
                                             <td>{{$studentList->mobile}}</td>
-                                            <td>{{$studentList->email}}</td>
+                                            <td>{{$studentList->class}}</td>
                                             <td>
 
-                                                <img src="{{url('resources/assets/images/student',$studentList->image)}}" alt="">
+                                                <img src="{{url('resources/assets/images/student',$studentList->image)}}" alt="" class="studentListImage">
 
                                             </td>
                                             <td>
-                                                <p>
-                                                <div class="switch">
-                                                    <form action="#" method="post">
+
+                                                <div class="switch text-center">
+                                                    <form action="{{route('post.disable.student',$studentList->email)}}" method="post">
                                                         <label>
                                                             <input type="hidden" name="_token" value="{{Session('_token')}}">
-                                                            <input type="checkbox" name="status" @if(1==1) checked='checked' @endif onChange="this.form.submit()">
+                                                            <input type="checkbox" name="status{{$studentList->email}}" @if($studentList->status==1) checked='checked' @else @endif onChange="this.form.submit()">
                                                             <span class="lever"></span>
 
                                                         </label>
                                                     </form>
                                                 </div>
-                                                <span>
-                                                    <a href="#"><i class="fa fa-paper-plane-o"></i></a>
+                                                {{--<i class="fa fa-paper-plane-o"></i>--}}
+                                                <span class="viewStudent">
+                                                    <a href="{{route('get.view.student',$studentList->email)}}" class="task-cat teal">view</a>
                                                 </span>
-                                                </p>
 
                                             </td>
                                         </tr>
