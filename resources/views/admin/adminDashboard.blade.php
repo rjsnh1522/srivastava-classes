@@ -26,11 +26,9 @@
                     <div class="col s12 m6 l3">
                         <div class="card">
                             <div class="card-content  green white-text">
-                                <p class="card-stats-title"><i class="mdi-social-group-add"></i> New Clients</p>
-                                <h4 class="card-stats-number">566</h4>
-                                <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 15% <span
-                                            class="green-text text-lighten-5">from yesterday</span>
-                                </p>
+                                <p class="card-stats-title"><i class="mdi-social-group-add"></i>Total Student</p>
+                                <h4 class="card-stats-number">{{$data['totalStudent']}}</h4>
+
                             </div>
 
                         </div>
@@ -62,11 +60,8 @@
                     <div class="col s12 m6 l3">
                         <div class="card">
                             <div class="card-content purple white-text">
-                                <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Total Sales</p>
-                                <h4 class="card-stats-number">$8990.63</h4>
-                                <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 70% <span
-                                            class="purple-text text-lighten-5">last month</span>
-                                </p>
+                                <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Admins</p>
+                                <h4 class="card-stats-number">{{$data['totalAdmin']}}</h4>
                             </div>
 
                         </div>
@@ -346,24 +341,6 @@
 
                 <!-- //////////////////////////////////////////////////////////////////////////// -->
 
-
-                <!-- Floating Action Button -->
-                <div class="fixed-action-btn" style="bottom: 50px; right: 19px;">
-                    <a class="btn-floating btn-large">
-                        <i class="mdi-action-stars"></i>
-                    </a>
-                    <ul>
-                        <li><a href="css-helpers.html" class="btn-floating red"><i
-                                        class="large mdi-communication-live-help"></i></a></li>
-                        <li><a href="app-widget.html" class="btn-floating yellow darken-1"><i
-                                        class="large mdi-device-now-widgets"></i></a></li>
-                        <li><a href="app-calendar.html" class="btn-floating green"><i
-                                        class="large mdi-editor-insert-invitation"></i></a></li>
-                        <li><a href="app-email.html" class="btn-floating blue"><i
-                                        class="large mdi-communication-email"></i></a></li>
-                    </ul>
-                </div>
-                <!-- Floating Action Button -->
 
             </div>
             <!--end container-->
