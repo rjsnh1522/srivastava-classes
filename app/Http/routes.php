@@ -109,6 +109,15 @@ Route::get('/our-achievements',
 //visitors end
 
 
+//chart test
+
+Route::get('/chart',
+    ['as' => 'get.chart',
+        'uses' => 'HomeController@index']);
+
+
+
+
 //    admin side route start
 
 
