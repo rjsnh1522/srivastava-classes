@@ -45,50 +45,23 @@ class LoginController extends Controller
         else{
             if(Auth::attempt($data)){
 
-
-
-//                return 1;
                 $checkStatus=User::select('*')->where('email',$email)->first();
-
-//                return $checkStatus->user_type;
-
                 Session::put('email',$checkStatus->email);
                 Session::put('user_type',$checkStatus->user_type);
 
                 if(Session::get('user_type')!=4){
-//                    return $checkStatus->email;
                    $dataAdmin=Admin::where('email',$checkStatus->email)->first();
-//                    return $dataAdmin;
-
-
-//                    return $dataAdmin->image;
                    Session::put('profilePic',$dataAdmin->image);
                    Session::put('name',$dataAdmin->name);
-
-
                 }
                 else{
-
                     $dataStudent=Student::where('email',$checkStatus->email)->first();
                     if($dataStudent==''){
-
-//                        return 1;
                         Session::flash('wait', 'Registration is not approved!!');
                         return redirect()->back();
                     }else{
-
-
                         Session::put('profilePic',$dataStudent->image);
                         Session::put('name',$dataStudent->name);
-
-//                        if(Session::get('profilePic')==''){
-//                            return 123;
-//                        }
-//                        else{
-//                            return 56;
-//                        }
-//
-//                        return Session::get('profilePic');
                     }
                 }
 
@@ -161,12 +134,11 @@ class LoginController extends Controller
         Session::flush('name');
 
 
-        return redirect('/login');
+//        return redirect('/login');
 
         return Redirect::route('get.login.page');
 
-        return Redirect::route('get.login.page');
-        //return route('');
+
     }
 
 

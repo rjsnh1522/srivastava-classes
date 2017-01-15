@@ -240,6 +240,16 @@ Route::group(['middleware' => 'student','prefix' => 'student'], function () {
             ['as' => 'post.complete.profile',
                 'uses' => 'admin\AdminController@postCompleteYourProfile']);
 
+        //change password
+
+        Route::get('/change-password/',
+            ['as' => 'get.change.password',
+                'uses' => 'admin\AdminController@getChangePassword']);
+
+        Route::post('/save-password/',
+            ['as' => 'post.change.password',
+                'uses' => 'admin\AdminController@postChangePassword']);
+
 
 
 //    time table

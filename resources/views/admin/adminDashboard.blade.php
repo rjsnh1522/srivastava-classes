@@ -34,33 +34,35 @@
                         </div>
                     </div>
                     <div class="col s12 m6 l3">
+                        <a href="{{route('get.join.requests')}}">
                         <div class="card">
                             <div class="card-content pink lighten-1 white-text">
-                                <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i> New Invoice</p>
-                                <h4 class="card-stats-number">1806</h4>
-                                <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-down"></i> 3% <span
-                                            class="deep-purple-text text-lighten-5">from last month</span>
-                                </p>
-                            </div>
+                                <p class="card-stats-title">
+                                    <i class="mdi-content-add"></i> New Request</p>
+                                <h4 class="card-stats-number">{{ $data['Notification']}}</h4>
 
+                            </div>
                         </div>
+                        </a>
+
                     </div>
                     <div class="col s12 m6 l3">
                         <div class="card">
+                            <a href="{{route('get.contact.message')}}">
                             <div class="card-content blue-grey white-text">
-                                <p class="card-stats-title"><i class="mdi-action-trending-up"></i> Today Profit</p>
-                                <h4 class="card-stats-number">$806.52</h4>
-                                <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 80% <span
-                                            class="blue-grey-text text-lighten-5">from yesterday</span>
-                                </p>
+                                <p class="card-stats-title"><i class="mdi-action-trending-up"></i>Contact</p>
+                                <h4 class="card-stats-number">{{ $data['contact']}}</h4>
+
                             </div>
+                            </a>
 
                         </div>
                     </div>
                     <div class="col s12 m6 l3">
                         <div class="card">
                             <div class="card-content purple white-text">
-                                <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>Admins</p>
+                                <p class="card-stats-title">
+                                    <i class="mdi-action-verified-user"></i>Admins</p>
                                 <h4 class="card-stats-number">{{$data['totalAdmin']}}</h4>
                             </div>
 

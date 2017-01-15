@@ -19,7 +19,7 @@
                     </li>
                     <li>
                         <a href="{{route('logout.me')}}"  class="waves-effect waves-block waves-light">
-                            <i class="mdi-hardware-keyboard-tab"></i></a>
+                            <i class="fa fa-power-off fa-2x powerOff"></i></a>
                     </li>
 
                 </ul>

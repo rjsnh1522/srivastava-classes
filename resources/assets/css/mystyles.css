@@ -232,3 +232,7 @@ textarea.materialize-textarea:disabled,
 textarea.materialize-textarea[readonly="readonly"]{
     color: rgba(0, 0, 0, 0.870588);
 }
+
+.powerOff{
+    color: red;
+}

@@ -84,17 +84,17 @@
                                         <div class="error">{{$errors->first('mobile')}}</div>
                                     </div>
 
-                                    <div class="input-field col s12">
-                                        <label for="password">Password*</label>
-                                        <input id="password" name="password" type="text" data-error=".error">
-                                        <div class="error">{{$errors->first('password')}}</div>
-                                    </div>
+                                    {{--<div class="input-field col s12">--}}
+                                        {{--<label for="password">Password*</label>--}}
+                                        {{--<input id="password" name="password" type="text" data-error=".error">--}}
+                                        {{--<div class="error">{{$errors->first('password')}}</div>--}}
+                                    {{--</div>--}}
 
-                                    <div class="input-field col s12">
-                                        <label for="password_confirmation">Confirm Password*</label>
-                                        <input id="password_confirmation" name="password_confirmation" type="text" data-error=".error">
-                                        <div class="error">{{$errors->first('password_confirmation')}}</div>
-                                    </div>
+                                    {{--<div class="input-field col s12">--}}
+                                        {{--<label for="password_confirmation">Confirm Password*</label>--}}
+                                        {{--<input id="password_confirmation" name="password_confirmation" type="text" data-error=".error">--}}
+                                        {{--<div class="error">{{$errors->first('password_confirmation')}}</div>--}}
+                                    {{--</div>--}}
 
                                     <div class="input-field col s12">
                                         <textarea id="address" name="address" class="materialize-textarea validate" data-error=".error">{{$data['adminTable']->address}}</textarea>

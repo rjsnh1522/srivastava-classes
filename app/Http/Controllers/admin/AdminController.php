@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Admin;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -18,7 +19,8 @@ use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
-    public function getAllAdminList(){
+    public function getAllAdminList()
+    {
 
 
         $data['pageTitle'] = 'All Admins';
@@ -29,18 +31,17 @@ class AdminController extends Controller
 //                    ->select('user_types.*','admins.*')->get();
 
         $data['allAdmins'] = Admin::leftjoin('users', 'admins.email', '=', 'users.email')
-                                ->where('users.user_type','!=',4)->get();
-
+            ->where('users.user_type', '!=', 4)->get();
 
 
 //        return $data;
 
 
-
-        return view('admin.pages.allAdmin.adminList',compact('data'));
+        return view('admin.pages.allAdmin.adminList', compact('data'));
     }
 
-    public function getAddNewAdmin(){
+    public function getAddNewAdmin()
+    {
         $data['pageTitle'] = 'All Admins';
         $data['active'] = 'admin';
 
@@ -51,64 +52,62 @@ class AdminController extends Controller
 
     }
 
-    public function postAddNewAdmin(){
+    public function postAddNewAdmin()
+    {
 
-        $fullName=Input::get('fullname');
-        $email=Input::get('email');
-        $password=Input::get('password');
-        $confPassword=Input::get('password_confirmation');
-        $status=Input::get('status');
+        $fullName = Input::get('fullname');
+        $email = Input::get('email');
+        $password = Input::get('password');
+        $confPassword = Input::get('password_confirmation');
+        $status = Input::get('status');
 
 
-
-        $data=[
-            'email'=>$email,
-            'fullName'=>$fullName,
-            'password'=>$password,
-            'password_confirmation'=>$confPassword
+        $data = [
+            'email' => $email,
+            'fullName' => $fullName,
+            'password' => $password,
+            'password_confirmation' => $confPassword
         ];
 
-        $rules=[
+        $rules = [
 
-            'email'=>'required|email|unique:users|unique:admins',
-            'fullName'=>'required',
-            'password'=>'required|min:8',
-            'password_confirmation'=>'required|same:password'
+            'email' => 'required|email|unique:users|unique:admins',
+            'fullName' => 'required',
+            'password' => 'required|min:8',
+            'password_confirmation' => 'required|same:password'
 
         ];
 
 
-        $validator=Validator::make($data,$rules);
+        $validator = Validator::make($data, $rules);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
 
             Session::flash('fail', 'Oops Something went wrong!!');
             return redirect()->back()->withErrors($validator);
 
-        }
-        else{
+        } else {
 
 
-            if($status=='on'){
-                $status=1;
+            if ($status == 'on') {
+                $status = 1;
+            } else {
+                $status = 0;
             }
-            else{
-                $status=0;
-            }
-            $addAdmin=new Admin();
-            $addAdmin->email=$email;
-            $addAdmin->name=$fullName;
-            $addAdmin->status=$status;
+            $addAdmin = new Admin();
+            $addAdmin->email = $email;
+            $addAdmin->name = $fullName;
+            $addAdmin->status = $status;
 //            $addAdmin->image='dummyuser.png';
 
             $addAdmin->save();
 
-            $addAdminUsers=new User();
+            $addAdminUsers = new User();
 
-            $addAdminUsers->email=$email;
-            $addAdminUsers->password=Hash::make($password);
-            $addAdminUsers->user_type='3';
-            $addAdminUsers->status=$status;
+            $addAdminUsers->email = $email;
+            $addAdminUsers->password = Hash::make($password);
+            $addAdminUsers->user_type = '3';
+            $addAdminUsers->status = $status;
             $addAdminUsers->save();
 
             Session::flash('success', 'New Admin added Successful!!');
@@ -122,46 +121,44 @@ class AdminController extends Controller
     }
 
 
-    public function postEnableDisable($id){
+    public function postEnableDisable($id)
+    {
 
-        $userType=Session::get('user_type');
-        $userEmail=Session::get('email');
+        $userType = Session::get('user_type');
+        $userEmail = Session::get('email');
 
-        $dataAdmin=Admin::where('admin_id',$id)->first();
+        $dataAdmin = Admin::where('admin_id', $id)->first();
 
-        $emailofUser=$dataAdmin->email;
+        $emailofUser = $dataAdmin->email;
 
-        $findInUser=User::where('email','=',$emailofUser)->first();
+        $findInUser = User::where('email', '=', $emailofUser)->first();
 
 
-        if($findInUser->user_type==1){
+        if ($findInUser->user_type == 1) {
 
             Session::flash('fail', 'You cant disable Boss of the web!!');
 
             return redirect()->back();
-        }
-        else{
+        } else {
 
-            if($dataAdmin->status==0){
+            if ($dataAdmin->status == 0) {
 
-                $dataAdmin->status=1;
+                $dataAdmin->status = 1;
                 $dataAdmin->save();
-                $userTable=User::where('email','=',$dataAdmin->email)->first();
-                $userTable->status=1;
+                $userTable = User::where('email', '=', $dataAdmin->email)->first();
+                $userTable->status = 1;
 
                 $userTable->save();
                 Session::flash('success', 'Admin Enabled Successfully!!');
                 return redirect()->back();
 
 
+            } else {
 
-            }
-            else{
-
-                $dataAdmin->status=0;
+                $dataAdmin->status = 0;
                 $dataAdmin->save();
-                $userTable=User::where('email','=',$dataAdmin->email)->first();
-                $userTable->status=0;
+                $userTable = User::where('email', '=', $dataAdmin->email)->first();
+                $userTable->status = 0;
 
                 $userTable->save();
 
@@ -179,32 +176,27 @@ class AdminController extends Controller
     }
 
 
+    public function postDeleteAdmin($id)
+    {
 
 
+        $adminTable = Admin::where('admin_id', $id)->first();
 
+        $email = $adminTable->email;
 
-    public function postDeleteAdmin($id){
+        $usrTable = User::where('email', $email)->first();
 
-
-       $adminTable=Admin::where('admin_id',$id)->first();
-
-       $email=$adminTable->email;
-
-       $usrTable=User::where('email',$email)->first();
-
-        if($usrTable->user_type==1){
+        if ($usrTable->user_type == 1) {
             Session::flash('fail', 'You cant Delete Boss of the Web!!');
             return redirect()->back();
 
-        }
-        elseif($usrTable->user_type==2){
+        } elseif ($usrTable->user_type == 2) {
 
 
             Session::flash('fail', 'You cant Delete Super Admin!!');
             return redirect()->back();
 
-        }
-        else{
+        } else {
 
             $adminTable->delete();
             $usrTable->delete();
@@ -220,17 +212,17 @@ class AdminController extends Controller
     }
 
 
-
-    public  function getCompleteYourProfile(){
+    public function getCompleteYourProfile()
+    {
 
 
         $data['pageTitle'] = 'Your Profile';
         $data['active'] = 'profile';
         $data['formName'] = 'Complete Your Profile';
 
-        $getEmail=Session::get('email');
-        $data['adminTable']=Admin::where('email',$getEmail)->first();
-        $data['userTable']=User::where('email',$getEmail)->first();
+        $getEmail = Session::get('email');
+        $data['adminTable'] = Admin::where('email', $getEmail)->first();
+        $data['userTable'] = User::where('email', $getEmail)->first();
 
 
 //        return $data;
@@ -245,87 +237,75 @@ class AdminController extends Controller
     {
 
 
-        $name      =Input::get('name');
-        $mobile    =Input::get('mobile');
-        $dob       =Input::get('dob');
-        $password  =Input::get('password');
-        $cpassword =Input::get('password_confirmation');
-        $address   =Input::get('address');
-        $newsImagename =Input::get('newsImage');
+        $name = Input::get('name');
+        $mobile = Input::get('mobile');
+        $dob = Input::get('dob');
+        $address = Input::get('address');
+        $newsImagename = Input::get('newsImage');
 
-        $profilePic =Input::file('newsImage');
-
-
-
+        $profilePic = Input::file('newsImage');
 
 
         $data = [
             'mobile' => $mobile,
-            'password' => $password,
-            'password_confirmation' => $cpassword,
-            'image'=> $profilePic
+            'image' => $profilePic
         ];
 
         $rules = [
             'mobile' => 'required|digits:10',
-            'password' => 'required|min:8',
-            'password_confirmation' => 'required|same:password',
-            'image'=>'image'
+            'image' => 'image'
         ];
 
 
         $validator = Validator::make($data, $rules);
 
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             Session::flash('fail', 'Something went wrong Please try again !!');
             return redirect()->back()->withInput()->withErrors($validator);
 
-        }
-        else{
+        } else {
 
-            $findAdmin=Admin::where('email',$email)->first();
+            $findAdmin = Admin::where('email', $email)->first();
 
-           $imageNewName=$findAdmin->image;
+            $imageNewName = $findAdmin->image;
 
-            if($imageNewName!=''){
+            if ($imageNewName != '') {
                 $image = Input::file('newsImage');
                 $image->move(base_path() . '/resources/assets/images/admin/', $imageNewName);
                 $thumb = Image::make(base_path() . '/resources/assets/images/admin/' . $imageNewName)->resize(140, 140)->save();
-            }else{
+            } else {
 
-              $image = Input::file('newsImage');
-                if(isset($image)){
+                $image = Input::file('newsImage');
+                if (isset($image)) {
 
 
-                  $imageNewName = time() . '.' . $image->getClientOriginalExtension();
+                    $imageNewName = time() . '.' . $image->getClientOriginalExtension();
                     if (!file_exists('/resources/assets/images/admin/')) {
                         mkdir('/resources/assets/images/admin/', 0777, true);
                     }
 
-                    $fileName=$image->move(base_path() . '/resources/assets/images/admin/', $imageNewName);
+                    $fileName = $image->move(base_path() . '/resources/assets/images/admin/', $imageNewName);
 
                     $thumb = Image::make($fileName->getRealPath())->resize(140, 140)->save();
                 }
 
             }
-            $findAdmin->name=$name;
-            $findAdmin->address=$address;
-            $findAdmin->mobile=$mobile;
-            $findAdmin->dob=$dob;
-            $findAdmin->image=$imageNewName;
+            $findAdmin->name = $name;
+            $findAdmin->address = $address;
+            $findAdmin->mobile = $mobile;
+            $findAdmin->dob = $dob;
+            $findAdmin->image = $imageNewName;
 
             $findAdmin->save();
 
-            $findInUser=User::where('email',$email)->first();
-
-            $findInUser->password=Hash::make($password);
-            $findInUser->mobile=$mobile;
+            $findInUser = User::where('email', $email)->first();
+            $findInUser->mobile = $mobile;
 
             $findInUser->save();
 
-            Session::set('name',$name);
-            Session::set('profilePic',$imageNewName);
+            Session::set('name', $name);
+            Session::set('profilePic', $imageNewName);
 
             Session::flash('success', 'Profile Data Saved!!');
             return redirect()->back();
@@ -337,7 +317,67 @@ class AdminController extends Controller
     }
 
 
+    public function getChangePassword()
+    {
 
+
+        $data['pageTitle'] = 'Change Login Credentials';
+        $data['active'] = 'profile';
+        $data['formName'] = 'Change Password';
+
+        return view('admin.pages.profile.change_pass', compact('data'));
+    }
+
+    public function postChangePassword()
+    {
+        $email = Session::get('email');
+
+        $oPass = Input::get('oldPassword');
+        $nPass = Input::get('password');
+        $cfpassword = Input::get('password_confirmation');
+
+
+        $data = [
+            'email' => $email,
+            'password' => $oPass
+        ];
+
+
+        if (Auth::attempt($data)) {
+            $data2 = [
+                'password' => $nPass,
+                'password_confirmation' => $cfpassword
+            ];
+            $rule = [
+                'password' => 'required|min:8',
+                'password_confirmation' => 'required|same:password'
+            ];
+
+            $validator = Validator::make($data2, $rule);
+
+                if ($validator->fails()) {
+                    Session::flash('fail', 'Repeat password must be same !!');
+                    return redirect()->back()->withErrors($validator);
+
+                } else {
+
+                    $finduser=User::where('email',$email)->first();
+
+                    $finduser->password=Hash::make($nPass);
+                    $finduser->save();
+
+                    Session::flash('success', 'Password Changed successful!!');
+                    return redirect()->back();
+
+                }
+        } else {
+
+            Session::flash('fail', 'Password does not match!!');
+            return redirect()->back();
+
+        }
+
+    }
 
 
 }
