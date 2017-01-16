@@ -10,6 +10,7 @@
 
 
 @section('css')
+    {!! \ConsoleTVs\Charts\Facades\Charts::assets() !!}
 @endsection
 
 
@@ -70,6 +71,83 @@
                     </div>
                 </div>
             </div>
+
+            <!--chart dashboard start-->
+            <div id="chart-dashboard">
+                <div class="row">
+                    <div class="col s12 m8 l8">
+                        <div class="card">
+                            <div class="card-move-up waves-effect waves-block waves-light">
+                                <div class="move-up cyan darken-1">
+                                    <div>
+                                        <span class="chart-title white-text">Revenue</span>
+                                        <div class="chart-revenue cyan darken-2 white-text">
+                                            <p class="chart-revenue-total">$4,500.85</p>
+                                            <p class="chart-revenue-per"><i class="mdi-navigation-arrow-drop-up"></i> 21.80 %</p>
+                                        </div>
+                                        <div class="switch chart-revenue-switch right">
+                                            <label class="cyan-text text-lighten-5">
+                                                Month
+                                                <input type="checkbox">
+                                                <span class="lever"></span> Year
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="trending-line-chart-wrapper">
+                                        <canvas id="trending-line-chart" height="70"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <a class="btn-floating btn-move-up waves-effect waves-light darken-2 right"><i class="mdi-content-add activator"></i></a>
+                                <div class="col s12 m3 l3">
+                                    <div id="doughnut-chart-wrapper">
+                                        {{--<canvas id="doughnut-chart" height="200">--}}
+
+                                        {{--</canvas>--}}
+                                        {{--<div class="doughnut-chart-status">4500--}}
+                                            {{--<p class="ultra-small center-align">Sold</p>--}}
+                                        {{--</div>--}}
+                                        {!! $data['ch2']->render() !!}
+                                    </div>
+                                </div>
+                                <div class="col s12 m2 l2">
+                                    <ul class="doughnut-chart-legend">
+                                        <li class="mobile ultra-small"><span class="legend-color"></span>Mobile</li>
+                                        <li class="kitchen ultra-small"><span class="legend-color"></span> Kitchen</li>
+                                        <li class="home ultra-small"><span class="legend-color"></span> Home</li>
+                                    </ul>
+                                </div>
+                                <div class="col s12 m5 l6">
+                                    <div class="trending-bar-chart-wrapper">
+                                        <canvas id="trending-bar-chart" height="90"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m4 l4">
+                        <div class="card">
+                            <div class="card-move-up teal waves-effect waves-block waves-light">
+                                <div class="move-up">
+                                    <p class="margin white-text">Browser Stats</p>
+                                    <canvas id="trending-radar-chart" height="114"></canvas>
+                                </div>
+                            </div>
+                            <div class="card-content  teal darken-2">
+                                <a class="btn-floating btn-move-up waves-effect waves-light darken-2 right"><i class="mdi-content-add activator"></i></a>
+                                <div class="line-chart-wrapper">
+                                    <p class="margin white-text">Revenue by country</p>
+                                    <canvas id="line-chart" height="114"></canvas>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--chart dashboard end-->
             <!--card stats end-->
 
             <!-- //////////////////////////////////////////////////////////////////////////// -->
@@ -360,5 +438,42 @@
 
 
 @section('script')
+    {{--<script src="{{url('resources/assets/js/chart.min.js')}}"></script>--}}
+
+    {{--<script src="{{url('resources/assets/js/chart-script.js')}}"></script>--}}
+
+    {{--<script>--}}
+        {{--$(function(){--}}
+            {{--$.getJSON("/sir/admin/admin-dashboard", function (result) {--}}
+
+                {{--var labels = [],data=[];--}}
+                {{--for (var i = 0; i < result.length; i++) {--}}
+                    {{--labels.push(result[i].month);--}}
+                    {{--data.push(result[i].projects);--}}
+                {{--}--}}
+
+                {{--alert(result);--}}
+                {{--var buyerData = {--}}
+                    {{--labels : labels,--}}
+                    {{--datasets : [--}}
+                        {{--{--}}
+                            {{--fillColor : "rgba(240, 127, 110, 0.3)",--}}
+                            {{--strokeColor : "#f56954",--}}
+                            {{--pointColor : "#A62121",--}}
+                            {{--pointStrokeColor : "#741F1F",--}}
+                            {{--data : data--}}
+                        {{--}--}}
+                    {{--]--}}
+                {{--};--}}
+                {{--var buyers = document.getElementById('projects-graph').getContext('2d');--}}
+                {{--new Chart(buyers).Line(buyerData, {--}}
+                    {{--bezierCurve : true--}}
+                {{--});--}}
+
+            {{--});--}}
+
+        {{--});--}}
+
+    {{--</script>--}}
 @endsection
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 
+use App\User;
 use ConsoleTVs\Charts\Facades\Charts;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $chart = Charts::create('line', 'highcharts')
+        $data['ch1'] = Charts::create('line', 'morris')
                 // Use this if you want to use your own template
             ->title('My nice chart')
             ->labels(['First', 'Second', 'Third'])
@@ -36,7 +37,15 @@ class HomeController extends Controller
             ->dimensions(1000,500)
             ->responsive(true);
 
+        $data['ch2']=Charts::database(User::all(),'bar','material')
+            ->elementLabel("Total")
+            ->responsive(true)
+            ->lastByMonth(6, true);
+
+
+        return $data;
+
 //        echo $chart;
-        return view('welcome', ['chart' => $chart]);
+        return view('welcome',compact('data'));
     }
 }
